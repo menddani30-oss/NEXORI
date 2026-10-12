@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10121c">
+<title>NEXORI — Seu catálogo de entretenimento</title>
+<style>
+:root{--bg:#0b0d14;--panel:#141824;--panel2:#1a2030;--line:#293044;--text:#f3f5fb;--muted:#9ba5bb;--accent:#a78bfa;--accent2:#6ee7d8;--danger:#fb7185;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 450px at 90% -10%,#29214b 0%,transparent 55%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.app{max-width:1200px;margin:auto;padding:20px 16px 48px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--accent),#6d5be8);display:grid;place-items:center;font-size:25px;box-shadow:0 8px 30px #8b5cf633}.brand h1{font-size:21px;line-height:1.1;margin:0}.brand p{margin:5px 0 0;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}.primary{background:var(--accent);color:#171225;padding:11px 15px;border-radius:12px;font-weight:750}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);padding:10px 13px;border-radius:11px}.danger{color:#ffc0ca;background:#3a1c29;border:1px solid #663041}.hero{padding:23px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(125deg,#191d2c,#171528 70%,#24203b);margin-bottom:22px}.eyebrow{color:var(--accent2);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.hero h2{font-size:clamp(24px,4vw,34px);line-height:1.1;margin:8px 0}.hero p{color:var(--muted);margin:0;max-width:620px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.stat{padding:13px;background:#ffffff08;border:1px solid #ffffff0c;border-radius:14px}.stat strong{display:block;font-size:22px}.stat span{color:var(--muted);font-size:12px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.search{flex:1;min-width:190px}.field{width:100%;background:#0e111b;color:var(--text);border:1px solid var(--line);padding:12px 13px;border-radius:11px}.toolbar select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:11px;padding:10px 12px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}.sectionhead h3{margin:0;font-size:18px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat( auto-fill,minmax(220px,1fr));gap:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-width:0;transition:transform .18s,border-color .18s}.card:hover{transform:translateY(-2px);border-color:#51467b}.cover{height:180px;background:linear-gradient(135deg,#29243f,#172c3c);position:relative;display:grid;place-items:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.cover .placeholder{font-size:50px;opacity:.8}.cover .kind{position:absolute;top:10px;left:10px;background:#080a12c9;border:1px solid #ffffff20;padding:5px 9px;border-radius:20px;font-size:11px}.star{position:absolute;right:10px;top:10px;background:#080a12c9;color:#ffd66b;border-radius:50%;width:34px;height:34px;font-size:19px}.cardbody{padding:14px}.cardtitle{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.cardtitle h4{margin:0;font-size:16px;overflow-wrap:anywhere}.status{font-size:11px;padding:4px 7px;border-radius:20px;background:#25362f;color:#a6f3c2;white-space:nowrap}.status.watching{background:#30284b;color:#d2c5ff}.status.pending{background:#34303a;color:#c6c4ce}.meta{font-size:12px;color:var(--muted);margin:8px 0 12px}.progressline{height:6px;border-radius:9px;background:#2b3040;overflow:hidden}.progressline span{height:100%;display:block;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:9px}.progresslabel{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px}.cardactions{display:flex;gap:7px;margin-top:13px}.cardactions button{flex:1;font-size:12px;padding:9px 6px;border-radius:9px;background:var(--panel2);color:var(--text);border:1px solid var(--line)}.empty{padding:40px 20px;text-align:center;border:1px dashed #3a4054;border-radius:18px;color:var(--muted)}.empty .big{font-size:38px}.empty h3{color:var(--text);margin:8px 0}.footer{text-align:center;color:#747e95;font-size:12px;margin-top:35px}
+dialog{width:min(620px,calc(100% - 24px));max-height:90vh;overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:0;box-shadow:0 24px 80px #0009}dialog::backdrop{background:#05060bd9;backdrop-filter:blur(5px)}.modalhead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.modalhead h3{margin:0}.x{background:transparent;color:var(--muted);font-size:25px}.modalbody{padding:20px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.formgroup{display:flex;flex-direction:column;gap:6px}.formgroup.full{grid-column:1/-1}.formgroup label{font-size:12px;color:var(--muted);font-weight:700}.hint{font-size:11px;color:var(--muted)}.preview{width:94px;height:120px;border-radius:12px;border:1px dashed #555c73;display:grid;place-items:center;overflow:hidden;background:#0e111b}.preview img{width:100%;height:100%;object-fit:cover}.modalfoot{display:flex;justify-content:flex-end;gap:9px;padding:15px 20px;border-top:1px solid var(--line)}.detailtop{display:flex;gap:15px;align-items:flex-start}.detailcover{width:105px;height:135px;object-fit:cover;border-radius:12px;background:#29243f;flex-shrink:0}.detailtop h3{margin:0 0 5px}.detailtop p{margin:0;color:var(--muted);font-size:13px}.season{margin-top:20px;border:1px solid var(--line);border-radius:13px;overflow:hidden}.seasonhead{padding:12px;background:var(--panel2);display:flex;align-items:center;justify-content:space-between;gap:8px}.seasonhead strong{font-size:14px}.episodes{padding:7px 12px}.episode{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #ffffff0b}.episode:last-child{border:0}.episode input{accent-color:var(--accent2);width:17px;height:17px}.episode span{flex:1;font-size:13px}.episode.done span{text-decoration:line-through;color:var(--muted)}.episode small{color:var(--muted)}.detailtools{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#e6fff8;color:#10201e;padding:11px 17px;border-radius:12px;font-weight:700;box-shadow:0 8px 30px #0007;display:none;z-index:10}
+@media(max-width:560px){.app{padding:14px 12px 35px}.top{align-items:flex-start}.brand h1{font-size:18px}.top>.primary{padding:10px;font-size:13px}.hero{padding:18px}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:19px}.stat span{font-size:10px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cover{height:145px}.cardbody{padding:11px}.cardtitle{display:block}.status{display:inline-block;margin-top:7px}.cardactions{flex-direction:column}.formgrid{grid-template-columns:1fr}.formgroup.full{grid-column:auto}.detailtop{gap:11px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo" aria-label="NEXORI">N</div><div><h1>NEXORI</h1><p>YOUR ENTERTAINMENT ARCHIVE</p></div></div>
+    <button class="primary" id="addBtn">＋ Adicionar</button>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">NEXORI · SEU UNIVERSO, ORGANIZADO</div>
+    <h2>Todos os seus animes em um só lugar.</h2>
+    <p>Organize capas, temporadas e episódios. Marque o que já assistiu e acompanhe seu progresso.</p>
+    <div class="stats">
+      <div class="stat"><strong id="statTitles">0</strong><span>Títulos cadastrados</span></div>
+      <div class="stat"><strong id="statEpisodes">0</strong><span>Episódios concluídos</span></div>
+      <div class="stat"><strong id="statProgress">0%</strong><span>Progresso geral</span></div>
+    </div>
+  </section>
+  <div class="toolbar">
+    <input class="field search" id="search" placeholder="🔎 Pesquisar por nome..." aria-label="Pesquisar títulos">
+    <select id="filterStatus" aria-label="Filtrar por status"><option value="all">Todos os status</option><option value="watching">Assistindo</option><option value="completed">Concluídos</option><option value="pending">Quero assistir</option></select>
+    <select id="filterType" aria-label="Filtrar por tipo"><option value="all">Todos os tipos</option><option>Anime</option><option>Série</option><option>Filme</option><option>Outro</option></select>
+    <button class="secondary" id="exportBtn" type="button">↓ Backup</button>
+    <button class="secondary" id="importBtn" type="button">↑ Restaurar</button>
+    <input id="importFile" type="file" accept="application/json,.json" hidden>
+  </div>
+  <div class="sectionhead"><h3>Minha biblioteca</h3><span class="muted" id="countLabel">0 títulos</span></div>
+  <main id="catalog" class="grid"></main>
+  <div class="footer">NEXORI V0.7 · Seus dados ficam salvos neste navegador/dispositivo.</div>
+</div>
+
+<dialog id="editDialog">
+  <form id="editForm">
+    <div class="modalhead"><h3 id="editHeading">Adicionar título</h3><button type="button" class="x" data-close="editDialog" aria-label="Fechar">×</button></div>
+    <div class="modalbody">
+      <div class="formgrid">
+        <div class="formgroup full"><label for="title">Nome do título *</label><input class="field" id="title" required maxlength="120" placeholder="Ex.: Solo Leveling"></div>
+        <div class="formgroup"><label for="type">Tipo</label><select class="field" id="type"><option>Anime</option><option>Série</option><option>Filme</option><option>Outro</option></select></div>
+        <div class="formgroup"><label for="status">Status</label><select class="field" id="status"><option value="pending">Quero assistir</option><option value="watching">Assistindo</option><option value="completed">Concluído</option></select></div>
+        <div class="formgroup"><label for="year">Ano (opcional)</label><input class="field" id="year" type="number" min="1900" max="2100" placeholder="2026"></div>
+        <div class="formgroup"><label for="rating">Minha nota (0–10)</label><input class="field" id="rating" type="number" min="0" max="10" step="0.5" placeholder="—"></div>
+        <div class="formgroup full"><label for="synopsis">Sinopse / observações</label><textarea class="field" id="synopsis" rows="2" maxlength="1200" placeholder="Anotações pessoais..."></textarea></div>
+        <div class="formgroup"><label for="coverFile">Capa / imagem</label><input class="field" id="coverFile" type="file" accept="image/*"><span class="hint">Imagem do seu dispositivo.</span></div>
+        <div class="formgroup"><label>Prévia</label><div class="preview" id="coverPreview">🖼️</div><button type="button" class="secondary" id="removeCover" style="margin-top:6px">Remover imagem</button></div>
+      </div>
+    </div>
+    <div class="modalfoot"><button type="button" class="secondary" data-close="editDialog">Cancelar</button><button type="submit" class="primary">Salvar título</button></div>
+  </form>
+</dialog>
+
+<dialog id="detailDialog">
+  <div class="modalhead"><h3>Detalhes do título</h3><button type="button" class="x" data-close="detailDialog" aria-label="Fechar">×</button></div>
+  <div class="modalbody" id="detailBody"></div>
+  <div class="modalfoot"><button type="button" class="secondary" data-close="detailDialog">Fechar</button></div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const STORE='animelist_v01_library';
+let titles=[];
+let editingId=null, coverData='', detailId=null;
+const $=id=>document.getElementById(id);
+const safe=(s='')=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+function load(){try{const v=JSON.parse(localStorage.getItem(STORE)||'[]');titles=Array.isArray(v)?v:[]}catch{titles=[]}}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(titles));return true}catch(e){toast('Armazenamento cheio. Use uma imagem menor ou exporte seus dados.');return false}}
+function episodeTotal(t){return (t.seasons||[]).reduce((n,s)=>n+(s.episodes||[]).length,0)}
+function episodeDone(t){return (t.seasons||[]).reduce((n,s)=>n+s.episodes.filter(e=>e.done).length,0)}
+function episodeReleased(ep){return ep.released!==false}
+function releasedCount(s){return (s.episodes||[]).filter(episodeReleased).length}
+function nextEpisodeNumber(s){return (s.episodes||[]).findIndex(ep=>!ep.done&&episodeReleased(ep))}
+function progress(t){const n=episodeTotal(t);return n?Math.round(episodeDone(t)/n*100):(t.status==='completed'?100:0)}
+function effectiveStatus(t){if(t.status==='completed'||(episodeTotal(t)>0&&progress(t)===100))return 'completed';if(t.status==='watching'||episodeDone(t)>0)return 'watching';return 'pending'}
+function statusLabel(s){return ({watching:'Assistindo',completed:'Concluído',pending:'Quero assistir'})[s]||s}
+function toast(msg){const el=$('toast');el.textContent=msg;el.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display='none',2500)}
+function render(){
+ const query=$('search').value.trim().toLocaleLowerCase('pt-BR'), fs=$('filterStatus').value, ft=$('filterType').value;
+ const filtered=titles.filter(t=>(t.title+' '+(t.synopsis||'')).toLocaleLowerCase('pt-BR').includes(query)&&(fs==='all'||effectiveStatus(t)===fs)&&(ft==='all'||t.type===ft));
+ $('statTitles').textContent=titles.length;
+ $('statEpisodes').textContent=titles.reduce((n,t)=>n+episodeDone(t),0);
+ const total=titles.reduce((n,t)=>n+episodeTotal(t),0), done=titles.reduce((n,t)=>n+episodeDone(t),0);
+ $('statProgress').textContent=total?Math.round(done/total*100)+'%':(titles.length&&titles.every(t=>t.status==='completed')?'100%':'0%');
+ $('countLabel').textContent=filtered.length+' '+(filtered.length===1?'título':'títulos');
+ const root=$('catalog');
+ if(!filtered.length){root.className='';root.innerHTML=`<div class="empty"><div class="big">${titles.length?'🔎':'📚'}</div><h3>${titles.length?'Nenhum resultado':'Sua biblioteca começa aqui'}</h3><p>${titles.length?'Tente mudar a pesquisa ou os filtros.':'Adicione seu primeiro anime, importe uma capa e organize as temporadas.'}</p><button class="primary" id="emptyAdd">${titles.length?'Adicionar título':'＋ Cadastrar primeiro título'}</button></div>`;$('emptyAdd').onclick=()=>openEditor();return}
+ root.className='grid';
+ root.innerHTML=filtered.map(t=>{const p=progress(t),st=effectiveStatus(t),eps=episodeTotal(t),seasons=(t.seasons||[]).length;return `<article class="card">
+ <div class="cover">${t.cover?`<img src="${t.cover}" alt="Capa de ${safe(t.title)}">`:'<div class="placeholder">🎌</div>'}<span class="kind">${safe(t.type)}</span><button class="star" data-action="star" data-id="${t.id}" title="Favoritar" aria-label="Favoritar">${t.favorite?'★':'☆'}</button></div>
+ <div class="cardbody"><div class="cardtitle"><h4>${safe(t.title)}</h4><span class="status ${st}">${statusLabel(st)}</span></div>
+ <div class="meta">${seasons} ${seasons===1?'temporada':'temporadas'} · ${eps} ${eps===1?'episódio':'episódios'}${t.year?' · '+safe(t.year):''}${t.rating!==''&&t.rating!=null?' · ★ '+safe(t.rating):''}</div>
+ <div class="progressline"><span style="width:${p}%"></span></div><div class="progresslabel"><span>${episodeDone(t)} de ${eps} episódios</span><strong>${p}%</strong></div>
+ <div class="cardactions"><button data-action="open" data-id="${t.id}">📂 Temporadas</button><button data-action="edit" data-id="${t.id}">✎ Editar</button></div></div></article>`}).join('');
+}
+function openEditor(id=null){
+ editingId=id;const t=id?titles.find(x=>x.id===id):null;
+ $('editHeading').textContent=t?'Editar título':'Adicionar título';$('title').value=t?.title||'';$('type').value=t?.type||'Anime';$('status').value=t?.status||'pending';$('year').value=t?.year||'';$('rating').value=t?.rating??'';$('synopsis').value=t?.synopsis||'';coverData=t?.cover||'';previewCover();$('coverFile').value='';$('editDialog').showModal();$('title').focus();
+}
+function previewCover(){$('coverPreview').innerHTML=coverData?`<img src="${coverData}" alt="Prévia da capa">`:'🖼️'}
+$('coverFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;if(!f.type.startsWith('image/')){toast('Escolha um arquivo de imagem.');return}if(f.size>5*1024*1024){toast('A imagem deve ter até 5 MB.');e.target.value='';return}const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*scale);c.height=Math.round(im.height*scale);c.getContext('2d').drawImage(im,0,0,c.width,c.height);coverData=c.toDataURL('image/jpeg',.82);previewCover()};im.src=r.result};r.readAsDataURL(f)});
+$('removeCover').onclick=()=>{coverData='';$('coverFile').value='';previewCover()};
+$('editForm').addEventListener('submit',e=>{e.preventDefault();const title=$('title').value.trim();if(!title)return;const data={title,type:$('type').value,status:$('status').value,year:$('year').value?Number($('year').value):'',rating:$('rating').value===''?'':Number($('rating').value),synopsis:$('synopsis').value.trim(),cover:coverData};if(editingId){const t=titles.find(x=>x.id===editingId);if(t)Object.assign(t,data)}else{titles.unshift({id:uid(),...data,favorite:false,seasons:[]})}persist();$('editDialog').close();render();toast(editingId?'Título atualizado!':'Título cadastrado!')});
+function openDetail(id){detailId=id;renderDetail();$('detailDialog').showModal()}
+function renderDetail(){
+ const t=titles.find(x=>x.id===detailId);if(!t)return;
+ const p=progress(t);
+ $('detailBody').innerHTML=`<div class="detailtop">${t.cover?`<img class="detailcover" src="${t.cover}" alt="Capa">`:'<div class="detailcover" style="display:grid;place-items:center;font-size:40px">🎌</div>'}<div><h3>${safe(t.title)}</h3><p>${safe(t.type)}${t.year?' · '+safe(t.year):''}${t.rating!==''&&t.rating!=null?' · ★ '+safe(t.rating):''}</p><p style="margin-top:8px">${safe(t.synopsis||'Sem sinopse ou observações.')}</p><p style="margin-top:8px">${episodeDone(t)} / ${episodeTotal(t)} episódios · ${p}%</p></div></div>
+ <div class="detailtools"><button class="secondary" data-detail="addseason">＋ Temporada</button><button class="secondary" data-detail="addepisode">＋ Episódios</button><button class="secondary" data-detail="markall">Marcar tudo assistido</button><button class="secondary" data-detail="edit">✎ Editar dados</button><button class="secondary danger" data-detail="delete">Excluir</button></div>
+ <div id="seasonList">${(t.seasons||[]).length?`<div class="formgroup" style="margin-top:20px"><label for="seasonPicker">Selecionar temporada</label><select class="field" id="seasonPicker">${t.seasons.map((s,si)=>`<option value="${si}" ${si===(Number.isInteger(t.activeSeason)?t.activeSeason:0)?'selected':''}>${safe(s.name||('Temporada '+(si+1)))} · ${s.episodes.length} episódios</option>`).join('')}</select><span class="hint">Escolha qual temporada deseja visualizar e atualizar.</span></div>`:''}${(t.seasons||[]).map((s,si)=>`<section class="season" data-season-card="${si}" style="${si===(Number.isInteger(t.activeSeason)?t.activeSeason:0)?'':'display:none'}"><div class="seasonhead"><strong>${safe(s.name||('Temporada '+(si+1)))} <span class="muted">(${s.episodes.filter(e=>e.done).length}/${s.totalEpisodes??s.episodes.length} assistidos)</span><div class="muted" style="font-size:11px;font-weight:400;margin-top:4px">Total: ${s.totalEpisodes??s.episodes.length} episódios · ${releasedCount(s)} lançados · ${s.episodes.filter(e=>e.done).length?('Último assistido: '+safe([...s.episodes].reverse().find(e=>e.done)?.name||'—')):'Ainda não começou'}</div></strong><button class="secondary" data-season-delete="${si}" style="padding:6px 9px;font-size:11px">Excluir</button></div><div class="episodes"><div class="formgroup" style="margin:4px 0 10px"><label for="current-${si}">Onde parei nesta temporada</label><select class="field" id="current-${si}" data-current-season="${si}"><option value="-1">Ainda não comecei</option>${s.episodes.map((ep,ei)=>`<option value="${ei}" ${(s.currentEpisode===ei)?'selected':''}>${safe(ep.name||('Episódio '+String(ei+1).padStart(2,'0')))}</option>`).join('')}</select><span class="hint">Escolha o episódio atual para salvar seu ponto de continuação.</span></div>${s.episodes.map((ep,ei)=>`<div class="episode ${ep.done?'done':''}" style="align-items:flex-start"><input type="checkbox" data-ep-season="${si}" data-ep-index="${ei}" ${ep.done?'checked':''} ${!episodeReleased(ep)?'disabled':''} aria-label="Marcar ${safe(ep.name)} como assistido"><div style="flex:1;min-width:0"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span>${safe(ep.name||('Episódio '+String(ei+1).padStart(2,'0')))}${s.currentEpisode===ei?' <b style="color:var(--accent2)">· ESTOU AQUI</b>':''}</span><small>${ep.done?'Assistido':episodeReleased(ep)?'Disponível':'Ainda não lançado'}</small></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:7px"><button type="button" class="secondary" data-release-toggle="${si}:${ei}" style="padding:5px 8px;font-size:11px">${episodeReleased(ep)?'Marcar não lançado':'Marcar lançado'}</button><button type="button" class="secondary" data-episode-edit="${si}:${ei}" style="padding:5px 8px;font-size:11px">Editar</button><button type="button" class="secondary danger" data-episode-remove="${si}:${ei}" style="padding:5px 8px;font-size:11px">Remover</button><label style="display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)">Data <input type="date" class="field" data-release-date="${si}:${ei}" value="${safe(ep.releaseDate||'')}" style="padding:5px 7px;width:auto;max-width:150px;font-size:11px"></label></div></div></div>`).join('')||'<p class="muted">Nenhum episódio.</p>'}</div></section>`).join('')||'<div class="empty" style="margin-top:18px"><div class="big">🎞️</div><p>Adicione uma temporada e seus episódios.</p></div>'}</div>`;
+}
+$('detailBody').addEventListener('click',e=>{
+ const editEpisode=e.target.closest('[data-episode-edit]');
+ if(editEpisode){const [si,ei]=editEpisode.dataset.episodeEdit.split(':').map(Number);const t=titles.find(x=>x.id===detailId),s=t?.seasons?.[si],ep=s?.episodes?.[ei];if(!ep)return;const name=prompt('Nome do episódio:',ep.name||`Episódio ${String(ei+1).padStart(2,'0')}`);if(name===null)return;const trimmed=name.trim();if(!trimmed){toast('O nome do episódio não pode ficar vazio.');return}ep.name=trimmed;persist();renderDetail();render();toast('Episódio atualizado.');return}
+ const removeEpisode=e.target.closest('[data-episode-remove]');
+ if(removeEpisode){const [si,ei]=removeEpisode.dataset.episodeRemove.split(':').map(Number);const t=titles.find(x=>x.id===detailId),s=t?.seasons?.[si],ep=s?.episodes?.[ei];if(!ep)return;if(!confirm(`Remover ${ep.name||`Episódio ${ei+1}`} desta temporada?`))return;s.episodes.splice(ei,1);s.totalEpisodes=s.episodes.length;if(s.currentEpisode===ei)s.currentEpisode=-1;else if(s.currentEpisode>ei)s.currentEpisode--;persist();renderDetail();render();toast('Episódio removido.');return}
+ const releaseButton=e.target.closest('[data-release-toggle]');
+ if(releaseButton){const [si,ei]=releaseButton.dataset.releaseToggle.split(':').map(Number);const t=titles.find(x=>x.id===detailId),ep=t?.seasons?.[si]?.episodes?.[ei];if(!ep)return;if(ep.done&&!episodeReleased(ep)){toast('Um episódio assistido não pode ser marcado como não lançado.');return}ep.released=!episodeReleased(ep);if(!ep.released){ep.done=false;ep.watchedAt=null;if(t.seasons[si].currentEpisode===ei)t.seasons[si].currentEpisode=-1}persist();renderDetail();render();toast(ep.released?'Episódio marcado como lançado.':'Episódio marcado como ainda não lançado.');return}
+ const action=e.target.closest('[data-detail]')?.dataset.detail;if(action){const t=titles.find(x=>x.id===detailId);if(!t)return;
+ if(action==='addseason'){const n=t.seasons.length+1;const name=prompt('Nome da temporada:',`Temporada ${n}`);if(name===null)return;const count=Number(prompt('Quantos episódios já foram lançados nesta temporada?', '1'));if(!Number.isInteger(count)||count<0||count>500){toast('Informe uma quantidade entre 0 e 500.');return}t.seasons.push({name:name.trim()||`Temporada ${n}`,totalEpisodes:count,currentEpisode:-1,episodes:Array.from({length:count},(_,i)=>({name:`Episódio ${String(i+1).padStart(2,'0')}`,done:false,watchedAt:null,released:true,releaseDate:''}))});t.activeSeason=t.seasons.length-1;persist();renderDetail();render();toast('Temporada salva com '+count+' episódios!')}
+ if(action==='addepisode'){if(!t.seasons.length){if(!confirm('Este título ainda não tem temporadas. Deseja criar a primeira temporada agora?'))return;const name=prompt('Nome da temporada:','Temporada 1');if(name===null)return;const count=Number(prompt('Quantos episódios já foram lançados nesta temporada?','1'));if(!Number.isInteger(count)||count<0||count>500){toast('Informe uma quantidade entre 0 e 500.');return}t.seasons.push({name:name.trim()||'Temporada 1',totalEpisodes:count,currentEpisode:-1,episodes:Array.from({length:count},(_,i)=>({name:`Episódio ${String(i+1).padStart(2,'0')}`,done:false,watchedAt:null,released:true,releaseDate:''}))});t.activeSeason=0;persist();renderDetail();render();toast('Temporada criada!');return}let ix=Number.isInteger(t.activeSeason)?t.activeSeason:0;if(t.seasons.length>1){const answer=prompt('Em qual temporada deseja adicionar episódios?\n'+t.seasons.map((s,i)=>`${i+1}. ${s.name}`).join('\n'),String(ix+1));if(answer===null)return;ix=Number(answer)-1}const s=t.seasons[ix];if(!s){toast('Selecione uma temporada válida.');return}const count=Number(prompt('Quantos episódios novos já foram lançados?','1'));if(!Number.isInteger(count)||count<1||count>100){toast('Adicione entre 1 e 100 episódios por vez.');return}const startAt=s.episodes.length;s.episodes.push(...Array.from({length:count},(_,i)=>({name:`Episódio ${String(startAt+i+1).padStart(2,'0')}`,done:false,watchedAt:null,released:true,releaseDate:''})));s.totalEpisodes=s.episodes.length;t.activeSeason=ix;persist();renderDetail();render();toast(count===1?'Episódio adicionado!':`${count} episódios adicionados!`)}
+ if(action==='markall'){const all=t.seasons.flatMap(s=>s.episodes).filter(episodeReleased);if(!all.length){toast('Ainda não há episódios lançados para marcar.');return}const mark=!all.every(ep=>ep.done);t.seasons.forEach(s=>s.episodes.forEach(ep=>{if(episodeReleased(ep))ep.done=mark}));if(mark&&all.length===episodeTotal(t))t.status='completed';else if(t.status==='completed')t.status='watching';persist();renderDetail();render();toast(mark?'Episódios lançados marcados como assistidos.':'Marcações removidas.')}
+ if(action==='edit'){ $('detailDialog').close();openEditor(t.id)}
+ if(action==='delete'){if(confirm(`Excluir "${t.title}" e todos os seus episódios?`)){titles=titles.filter(x=>x.id!==t.id);persist();$('detailDialog').close();render();toast('Título excluído.')}}}
+ const del=e.target.closest('[data-season-delete]');if(del){const t=titles.find(x=>x.id===detailId),ix=Number(del.dataset.seasonDelete);if(confirm(`Excluir ${t.seasons[ix].name} e seus episódios?`)){t.seasons.splice(ix,1);if(!t.seasons.length)t.activeSeason=0;else t.activeSeason=Math.min(Number.isInteger(t.activeSeason)?t.activeSeason:0,t.seasons.length-1);persist();renderDetail();render()}}
+});
+$('detailBody').addEventListener('change',e=>{const releaseDate=e.target.closest('[data-release-date]');if(releaseDate){const [si,ei]=releaseDate.dataset.releaseDate.split(':').map(Number);const ep=titles.find(x=>x.id===detailId)?.seasons?.[si]?.episodes?.[ei];if(ep){ep.releaseDate=releaseDate.value;persist();toast('Data de lançamento salva.')}return}const picker=e.target.closest('#seasonPicker');if(picker){const t=titles.find(x=>x.id===detailId);t.activeSeason=Number(picker.value);persist();renderDetail();return}const current=e.target.closest('[data-current-season]');if(current){const t=titles.find(x=>x.id===detailId),si=Number(current.dataset.currentSeason),s=t.seasons[si];s.currentEpisode=Number(current.value);if(s.currentEpisode>=0){t.status='watching';s.episodes[s.currentEpisode].started=true}persist();renderDetail();render();toast(s.currentEpisode>=0?'Ponto de continuação salvo!':'Ponto de continuação removido.');return}const box=e.target.closest('[data-ep-season]');if(!box)return;const t=titles.find(x=>x.id===detailId),s=Number(box.dataset.epSeason),i=Number(box.dataset.epIndex);if(box.checked&&!episodeReleased(t.seasons[s].episodes[i])){box.checked=false;toast('Este episódio ainda não foi lançado.');return}t.seasons[s].episodes[i].done=box.checked;if(box.checked){t.seasons[s].episodes[i].watchedAt=new Date().toISOString();if(t.seasons[s].currentEpisode===i)t.seasons[s].currentEpisode=i+1<t.seasons[s].episodes.length?i+1:-1}else{t.seasons[s].currentEpisode=i}if(episodeTotal(t)>0&&progress(t)===100)t.status='completed';else if(box.checked)t.status='watching';else if(t.status==='completed')t.status='watching';persist();renderDetail();render()});
+$('catalog').addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const t=titles.find(x=>x.id===b.dataset.id);if(!t)return;if(b.dataset.action==='open')openDetail(t.id);if(b.dataset.action==='edit')openEditor(t.id);if(b.dataset.action==='star'){t.favorite=!t.favorite;persist();render();toast(t.favorite?'Adicionado aos favoritos.':'Removido dos favoritos.')}});
+$('addBtn').onclick=()=>openEditor();$('search').addEventListener('input',render);$('filterStatus').addEventListener('change',render);$('filterType').addEventListener('change',render);
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+
+$('exportBtn').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify({app:'NEXORI',version:'0.7',exportedAt:new Date().toISOString(),titles},null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='nexori-backup.json';a.click();URL.revokeObjectURL(url);toast('Backup exportado!');
+});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  try{
+    const parsed=JSON.parse(await file.text());
+    const incoming=Array.isArray(parsed)?parsed:parsed.titles;
+    if(!Array.isArray(incoming)||!incoming.every(t=>t&&typeof t.title==='string'))throw new Error('invalid');
+    if(!confirm(`Restaurar ${incoming.length} títulos? Isso substituirá a biblioteca atual.`))return;
+    titles=incoming.map(t=>({...t,id:String(t.id||uid()),type:t.type||'Anime',status:t.status||'pending',favorite:!!t.favorite,seasons:Array.isArray(t.seasons)?t.seasons.map(s=>({name:s.name||'Temporada',totalEpisodes:Number.isInteger(s.totalEpisodes)?s.totalEpisodes:(Array.isArray(s.episodes)?s.episodes.length:0),currentEpisode:Number.isInteger(s.currentEpisode)?s.currentEpisode:-1,episodes:Array.isArray(s.episodes)?s.episodes.map(ep=>({name:ep.name||'Episódio',done:!!ep.done,watchedAt:ep.watchedAt||null})):[]})):[]}));
+    persist();render();toast('Backup restaurado!');
+  }catch{toast('Arquivo inválido. Selecione um backup NEXORI em JSON.')}
+  finally{e.target.value=''}
+});
+
+// Start with a small demo library only when this browser has no saved data yet.
+load();
+if(!localStorage.getItem(STORE)){
+ titles=[
+ {id:uid(),title:'Solo Leveling',type:'Anime',status:'watching',year:2025,rating:'',synopsis:'Exemplo de cadastro — edite ou exclua este título.',cover:'',favorite:true,seasons:[{name:'Temporada 1 (exemplo)',episodes:[{name:'Episódio 01',done:true},{name:'Episódio 02',done:false}]}]},
+ {id:uid(),title:'Meu próximo anime',type:'Anime',status:'pending',year:'',rating:'',synopsis:'Este é um título de demonstração. Você pode removê-lo e cadastrar seus próprios títulos.',cover:'',favorite:false,seasons:[]}
+ ];persist();
+}
+render();
+</script>
+</body>
+</html>
